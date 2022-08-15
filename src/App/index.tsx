@@ -1,13 +1,13 @@
 import * as React from 'react';
 
+import Router from '../Services/RouterService';
+
 import './styles.css';
 
 const MalCarApp: React.FC = (): JSX.Element => {
     return (
-        <div className="App">
-            <header className="App-header">
-                Mal Car
-            </header>
+        <div className="mal-car-root">
+            <Router />
         </div>
     );
 };
