@@ -4,6 +4,7 @@
     background-color: #b4b4b4;
     position: relative;
     z-index: 10001;
+    cursor: pointer;
 }
 
 .mal-car-header-logo .mal-car-logo-wrap {
