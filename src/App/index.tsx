@@ -6,6 +6,7 @@ import Router from '../Services/RouterService';
 import ProxyServiceProvider from '../Services/ProxyService/context';
 import StorageServiceProvider from '../Services/StorageService/context';
 import LocalizationServiceProvider from '../Services/LocalizationService';
+import NotificationServiceProvider from '../Services/NotificationService';
 
 import './styles.css';
 
@@ -18,9 +19,11 @@ const MalCarApp: React.FC = (): JSX.Element => {
             <QueryClientProvider client={queryClient}>
                 <StorageServiceProvider>
                     <LocalizationServiceProvider>
-                        <ProxyServiceProvider>
-                            <Router />
-                        </ProxyServiceProvider>
+                        <NotificationServiceProvider>
+                            <ProxyServiceProvider>
+                                <Router />
+                            </ProxyServiceProvider>
+                        </NotificationServiceProvider>
                     </LocalizationServiceProvider>
                 </StorageServiceProvider>
             </QueryClientProvider>

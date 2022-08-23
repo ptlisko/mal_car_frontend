@@ -3,22 +3,37 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { LocalizationContext } from '../../../../Services/LocalizationService';
+import { NotificationServiceContext } from '../../../../Services/NotificationService';
+
+import usePrevious from '../../../../Hooks/usePrevious';
 
 import './styles.css';
 
 const LanguageChanger: React.FC = (): JSX.Element => {
-const localizationContext = React.useContext(LocalizationContext);
+    const localizationContext = React.useContext(LocalizationContext);
+    const [changingLanguage, setChangingLanguage] = React.useState(false);
+    const previousChangingLanguage = usePrevious(changingLanguage);
+    const notificationServiceContext = React.useContext(NotificationServiceContext);
     const t = localizationContext.useFormatMessage();
     const location = useLocation();
     const navigate = useNavigate();
     const handleOnChangeLanguage = React.useCallback((nextLanguage: string) => () => {
-        localizationContext.changeLanguage(nextLanguage)
+        setChangingLanguage(true);
+        localizationContext.changeLanguage(nextLanguage);
         if (location.pathname !== '/') {
             const nextLocationPathName = localizationContext.getRouteTranslateByLanguage(nextLanguage, location.pathname);
             navigate(nextLocationPathName);
         }
+        setTimeout(() => {
+            setChangingLanguage(false);
+        }, 200)
     }, [localizationContext, location]);
 
+    React.useEffect(() => {
+        if (previousChangingLanguage && !changingLanguage) {
+            notificationServiceContext.handleShowSuccessNotification('notification.changeLanguage.success');
+        }
+    }, [changingLanguage, previousChangingLanguage, localizationContext]);
     return (
         <div className="mal-car-language-changer">
             <Dropdown>

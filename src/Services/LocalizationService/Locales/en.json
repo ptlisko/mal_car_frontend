@@ -9,5 +9,6 @@
     "mainMenu.button.name.contact": "Contact",
     "mainMenu.button.name.aboutUs": "About Us",
     "mainMenu.button.name.purchase": "Purchase",
-    "mainMenu.button.name.sell": "Sell"
+    "mainMenu.button.name.sell": "Sell",
+    "notification.changeLanguage.success": "The language has been successfully changed!"
 }

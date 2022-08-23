@@ -9,5 +9,6 @@
     "mainMenu.button.name.contact": "Kontakt",
     "mainMenu.button.name.aboutUs": "O nas",
     "mainMenu.button.name.purchase": "Kupit",
-    "mainMenu.button.name.sell": "Predat"
+    "mainMenu.button.name.sell": "Predat",
+    "notification.changeLanguage.success": "Jazyk bol úspešne zmenený!"
 }
